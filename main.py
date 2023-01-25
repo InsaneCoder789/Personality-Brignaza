@@ -135,11 +135,11 @@ def personality_test():
     submit_button.pack()
     question5.mainloop()
     if q5var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        observant += 1 
     if q5var.get() == 2:
-        score = 1
+        intuitive += 1
     if q5var.get() == 3: # Introvert 
-        introvert += 1
+        intuitive += 1
 
 
 
@@ -165,11 +165,11 @@ def personality_test():
     submit_button.pack()
     question6.mainloop()
     if q6var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        observant += 1 
     if q6var.get() == 2:
-        score = 1
+        intuitive += 1
     if q6var.get() == 3: # Introvert 
-        introvert += 1
+        observant += 1
 
 
 
@@ -196,11 +196,11 @@ def personality_test():
     submit_button.pack()
     question7.mainloop()
     if q7var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        thinking += 1 
     if q7var.get() == 2:
-        score = 1
+        feeling += 1
     if q7var.get() == 3: # Introvert 
-        introvert += 1
+        feeling += 1
 
 
 
@@ -224,11 +224,11 @@ def personality_test():
     submit_button.pack()
     question8.mainloop()
     if q8var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        thinking += 1 
     if q8var.get() == 2:
-        score = 1
+        feeling += 1
     if q8var.get() == 3: # Introvert 
-        introvert += 1
+        feeling += 1
 
 
 
@@ -252,11 +252,11 @@ def personality_test():
     submit_button.pack()
     question9.mainloop()
     if q9var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        thinking += 1 
     if q9var.get() == 2:
-        score = 1
+        feeling += 1
     if q9var.get() == 3: # Introvert 
-        introvert += 1
+        feeling += 1
 
 
 
@@ -283,11 +283,11 @@ def personality_test():
     submit_button.pack()
     question10.mainloop()
     if q10var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        judging += 1 
     if q10var.get() == 2:
-        score = 1
+        prospecting += 1
     if q10var.get() == 3: # Introvert 
-        introvert += 1
+        prospecting += 1
 
 
 
@@ -309,11 +309,11 @@ def personality_test():
     submit_button.pack()
     question11.mainloop()
     if q11var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        judging += 1 
     if q11var.get() == 2:
-        score = 1
+        prospecting += 1
     if q11var.get() == 3: # Introvert 
-        introvert += 1
+        prospecting += 1
 
 
 
@@ -338,11 +338,11 @@ def personality_test():
     submit_button.pack()
     question2.mainloop()
     if q12var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        judging += 1 
     if q12var.get() == 2:
-        score = 1
+        prospecting = 1
     if q12var.get() == 3: # Introvert 
-        introvert += 1
+        prospecting += 1
 
 
 
@@ -363,15 +363,15 @@ def personality_test():
     ques13_opt2_button.pack()
     ques13_opt3_button = tk.Radiobutton(question13, text="No", variable=q13var, value=3)
     ques13_opt3_button.pack()
-    submit_button = tk.Button(question2, text="Next", command=question13.destroy)
+    submit_button = tk.Button(question13, text="Next", command=question13.destroy)
     submit_button.pack()
     question13.mainloop()
     if q13var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        turbulent += 1 
     if q13var.get() == 2:
-        score = 1
+        assertive += 1
     if q13var.get() == 3: # Introvert 
-        introvert += 1
+        assertive += 1
 
 
 
@@ -396,11 +396,11 @@ def personality_test():
     submit_button.pack()
     question14.mainloop()
     if q14var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        turbulent += 1 
     if q14var.get() == 2:
-        score = 1
+        assertive += 1
     if q14var.get() == 3: # Introvert 
-        introvert += 1
+        assertive += 1
 
 
 
@@ -410,24 +410,24 @@ def personality_test():
     question15 = tk.Tk()
     question15.title("Question 15")
     question15.geometry("")
-    q15label = tk.Label(question2, text="Q.Have you ever felt as though your feelings are so bottled up, you could burst ?")
+    q15label = tk.Label(question15, text="Q.Have you ever felt as though your feelings are so bottled up, you could burst ?")
     q15label.pack()
-    q15var = tk.StringVar(question2)
+    q15var = tk.StringVar(question15)
     ques15_opt1_button = tk.Radiobutton(question15, text="Yes", variable=q15var, value=1)
     ques15_opt1_button.pack()
     ques15_opt2_button = tk.Radiobutton(question15, text="Perhaps", variable=q15var, value=2)
     ques15_opt2_button.pack()
     ques15_opt3_button = tk.Radiobutton(question15, text="No", variable=q15var, value=3)
     ques15_opt3_button.pack()
-    submit_button = tk.Button(question2, text="Next", command=question2.destroy)
+    submit_button = tk.Button(question15, text="Submit", command=question15.destroy)
     submit_button.pack()
     question15.mainloop()
     if q15var.get() == 1:  # Extrovert 
-        extrovert += 1 
+        turbulent += 1 
     if q15var.get() == 2:
-        score = 1
+        assertive += 1
     if q15var.get() == 3: # Introvert 
-        introvert += 1
+        assertive += 1
 
 
 
@@ -438,12 +438,56 @@ def personality_test():
     results = tk.Tk()
     results.title("Results")
     results.geometry("200x100")
-    if score == 0:
-        result_label = tk.Label(results, text="You are a structured extrovert.")
-    elif score == 1:
-        result_label = tk.Label(results, text="You are a balanced individual.")
+    if (introvert,intuitive,thinking,judging) >= 2 :  #INTJ
+        result_label = tk.Label(results, text="You are an Architect")
+
+    elif introvert >= 2 and intuitive >= 2 and thinking >= 2 and prospecting >= 2: #INTP
+        result_label = tk.Label(results, text="You are a Logician.")
+
+    elif extrovert >= 2 and intuitive >= 2 and thinking >= 2 and judging >= 2: #ENTJ
+        result_label = tk.Label(results, text="You are a Commander.")
+
+    elif extrovert >= 2 and intuitive >= 2 and thinking >= 2 and prospecting >= 2: #ENTP
+        result_label = tk.Label(results, text="You are a Debater.")
+
+    elif introvert >= 2 and intuitive >= 2 and feeling >= 2 and judging >= 2: #INFJ
+        result_label = tk.Label(results, text="You are a Advocate.")
+
+    elif introvert >= 2 and intuitive >= 2 and feeling >= 2 and prospecting >= 2: #INFP
+        result_label = tk.Label(results, text="You are a Mediator.")
+
+    elif extrovert >= 2 and intuitive >= 2 and feeling >= 2 and judging >= 2: #ENFJ 
+        result_label = tk.Label(results, text="You are a Protagonist.")
+
+    elif extrovert >= 2 and intuitive >= 2 and feeling >= 2 and prospecting >= 2: #ENFP
+        result_label = tk.Label(results, text="You are a Campaigner.")
+
+    elif introvert >= 2 and observant >= 2 and thinking >= 2 and judging >= 2: #ISTJ
+        result_label = tk.Label(results, text="You are a Logistician.")
+
+    elif introvert >= 2 and observant >= 2 and feeling >= 2 and judging >= 2: #ISFJ
+        result_label = tk.Label(results, text="You are a Defender.")
+
+    elif extrovert >= 2 and observant >= 2 and thinking >= 2 and judging >= 2: #ESTJ
+        result_label = tk.Label(results, text="You are a Executive.")
+
+    elif extrovert >= 2 and observant >= 2 and feeling >= 2 and judging >= 2: #ESFJ
+        result_label = tk.Label(results, text="You are a Consultant.")
+
+    elif introvert >= 2 and observant >= 2 and thinking >= 2 and prospecting >= 2: #ISTP
+        result_label = tk.Label(results, text="You are a Virtuoso.")
+
+    elif introvert >= 2 and observant >= 2 and feeling >= 2 and prospecting >= 2: #ISFP 
+        result_label = tk.Label(results, text="You are a  Adventurer.")
+
+    elif extrovert >= 2 and observant >= 2 and thinking >= 2 and prospecting >= 2: #ESTP 
+        result_label = tk.Label(results, text="You are a Entrepreneur.")
+
+    elif extrovert >= 2 and observant >= 2 and feeling >= 2 and prospecting >= 2: #ESFP
+        result_label = tk.Label(results, text="You are a Entertainer.")
+
     else:
-        result_label = tk.Label(results, text="You are a spontaneous introvert.")
+        result_label = tk.Label(results, text="You are not a human if you have none of the 16 personalities")
     result_label.pack()
     results.mainloop()
 
