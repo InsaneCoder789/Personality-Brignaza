@@ -1,6 +1,22 @@
 import tkinter as tk
+from tkinter import *
+from tkinter import messagebox
+
+scale_res = '974x968+0+0'
+
+
+
 
 def personality_test():
+
+    name = name_entry.get()
+    root.destroy()
+    print(name)
+    if name == "":
+        messagebox.showerror("Error", "Please enter your name.")
+    
+        
+
     introvert = 0 
     extrovert = 0 
     observant = 0 
@@ -19,17 +35,38 @@ def personality_test():
 # Question 1
     question1 = tk.Tk()
     question1.title("Question 1")
-    question1.geometry("")
-    q1label = tk.Label(question1, text="When a group of individuals are engaged in an activity, what do you do?")
+    question1.geometry(scale_res)
+    image = PhotoImage(file='Images/QnAFrame.png')
+    image_label = tk.Label(question1, image=image)
+    image_label.pack()
+
+    # Heading Frame
+    heading_frame = tk.Frame(question1, bg='white', width=974, height=100)
+    heading_frame.place(x=0, y=0)
+
+    #Question Frame 
+    question_frame = tk.Frame(question1, bg='white', width=974, height=150)
+    question_frame.place(x=0, y=100)
+
+    #OptionFrame 
+    options_frame = tk.Frame(question1, bg='white', width=974, height=150)
+    options_frame.place(x=0, y=250)
+
+
+    #Next Button Frame 
+    button_frame = tk.Frame(question1, bg='white', width=100, height=50)
+    button_frame.place(x=20, y=190)
+
+    q1label = tk.Label(question_frame, text="When a group of individuals are engaged in an activity, what do you do?")
     q1label.pack()
     q1var = tk.StringVar(question1)
-    ques1_opt1_button = tk.Radiobutton(question1, text="Take an active part in what they are doing", variable=q1var, value=1)
+    ques1_opt1_button = tk.Radiobutton(options_frame, text="Take an active part in what they are doing",background='black', variable=q1var, value=1)
     ques1_opt1_button.pack()
-    ques1_opt2_button = tk.Radiobutton(question1, text="in between", variable=q1var, value=2)
+    ques1_opt2_button = tk.Radiobutton(options_frame, text="in between", variable=q1var, value=2)
     ques1_opt2_button.pack()
-    ques1_opt3_button = tk.Radiobutton(question1, text="usually only watch", variable=q1var, value=3)
+    ques1_opt3_button = tk.Radiobutton(options_frame, text="usually only watch", variable=q1var, value=3)
     ques1_opt3_button.pack()
-    submit_button = tk.Button(question1, text="Next", command=question1.destroy)
+    submit_button = tk.Button(button_frame, text="Next", command=question1.destroy)
     submit_button.pack()
     question1.mainloop()
     if q1var.get() == 1:  # Extrovert 
@@ -43,7 +80,7 @@ def personality_test():
 # Question 2
     question2 = tk.Tk()
     question2.title("Question 2")
-    question2.geometry("")
+    question2.geometry(scale_res)
     q2label = tk.Label(question2, text="Q.  Can you speak to a group of strangers without having difficulty expressing yourself ?")
     q2label.pack()
     q2var = tk.StringVar(question2)
@@ -67,7 +104,7 @@ def personality_test():
 # Question 3
     question3 = tk.Tk()
     question3.title("Question 3")
-    question3.geometry("")
+    question3.geometry(scale_res)
     q3label = tk.Label(question3, text="Q.Can you carry on as usual while others are watching without being uncomfortable ?")
     q3label.pack()
     q3var = tk.StringVar(question3)
@@ -95,7 +132,7 @@ def personality_test():
 # Question 4
     question4 = tk.Tk()
     question4.title("Question 4")
-    question4.geometry("")
+    question4.geometry(scale_res)
     q4label = tk.Label(question4, text="Q. Do you think that you are doing everything that is expected of you and that things are going well for you ?")
     q4label.pack()
     q4var = tk.StringVar(question4)
@@ -121,7 +158,7 @@ def personality_test():
 # Question 5
     question5 = tk.Tk()
     question5.title("Question 5")
-    question5.geometry("")
+    question5.geometry(scale_res)
     q5label = tk.Label(question5, text="Q.Do you believe that compared to other people, your life seems smoother and more gratifying ?")
     q5label.pack()
     q5var = tk.StringVar(question5)
@@ -151,7 +188,7 @@ def personality_test():
 # Question 6
     question6 = tk.Tk()
     question6.title("Question 6")
-    question6.geometry("")
+    question6.geometry(scale_res)
     q6label = tk.Label(question6, text="Q.When something is bothering you, you : ")
     q6label.pack()
     q6var = tk.StringVar(question6)
@@ -169,7 +206,7 @@ def personality_test():
     if q6var.get() == 2:
         intuitive += 1
     if q6var.get() == 3: # Introvert 
-        observant += 1
+        intuitive += 1
 
 
 
@@ -182,7 +219,7 @@ def personality_test():
 # Question 7
     question7 = tk.Tk()
     question7.title("Question 7")
-    question7.geometry("")
+    question7.geometry(scale_res)
     q7label = tk.Label(question7, text="Q.Can you remain joyful even when things aren't going well ?")
     q7label.pack()
     q7var = tk.StringVar(question7)
@@ -210,7 +247,7 @@ def personality_test():
 # Question 8
     question8 = tk.Tk()
     question8.title("Question 8")
-    question8.geometry("")
+    question8.geometry(scale_res)
     q8label = tk.Label(question8, text="Q.Do you become irritated if someone takes your stuff from you without seeking permission ?")
     q8label.pack()
     q8var = tk.StringVar(question8)
@@ -238,7 +275,7 @@ def personality_test():
     # Question 9
     question9= tk.Tk()
     question9.title("Question 9")
-    question9.geometry("")
+    question9.geometry(scale_res)
     q9label = tk.Label(question9, text="Q.If your peers exclude you from a game, you:")
     q9label.pack()
     q9var = tk.StringVar(question9)
@@ -269,7 +306,7 @@ def personality_test():
     # Question 10
     question10 = tk.Tk()
     question10.title("Question 10")
-    question10.geometry("")
+    question10.geometry(scale_res)
     q10label = tk.Label(question10, text="Q.What sort of friends do you prefer having ?")
     q10label.pack()
     q10var = tk.StringVar(question10)
@@ -295,7 +332,7 @@ def personality_test():
     # Question 11
     question11 = tk.Tk()
     question11.title("Question 11")
-    question11.geometry("")
+    question11.geometry(scale_res)
     q11label = tk.Label(question11, text="Q.Are you someone who is usually careful ?")
     q11label.pack()
     q11var = tk.StringVar(question11)
@@ -324,7 +361,7 @@ def personality_test():
     # Question 12
     question12 = tk.Tk()
     question12.title("Question 12")
-    question12.geometry("")
+    question12.geometry(scale_res)
     q12label = tk.Label(question12, text="Q.  Can you speak to a group of strangers without having difficulty expressing yourself ?")
     q12label.pack()
     q12var = tk.StringVar(question12)
@@ -353,7 +390,7 @@ def personality_test():
     # Question 13
     question13 = tk.Tk()
     question13.title("Question 13")
-    question13.geometry("")
+    question13.geometry(scale_res)
     q13label = tk.Label(question13, text="Do you ever get the feeling that you aren't much good or that you never do anything meaningful ?")
     q13label.pack()
     q13var = tk.StringVar(question2)
@@ -382,7 +419,7 @@ def personality_test():
     # Question 14
     question14 = tk.Tk()
     question14.title("Question 14")
-    question14.geometry("")
+    question14.geometry(scale_res)
     q14label = tk.Label(question14, text="Q. Do you become really upset with others when something goes wrong before you begin to consider what might be done to fix it ?")
     q14label.pack()
     q14var = tk.StringVar(question14)
@@ -409,7 +446,7 @@ def personality_test():
     # Question 15
     question15 = tk.Tk()
     question15.title("Question 15")
-    question15.geometry("")
+    question15.geometry(scale_res)
     q15label = tk.Label(question15, text="Q.Have you ever felt as though your feelings are so bottled up, you could burst ?")
     q15label.pack()
     q15var = tk.StringVar(question15)
@@ -432,73 +469,177 @@ def personality_test():
 
 
 
-
+# HERE IS THE STRUCTURING OF THE ANSWER PART !!!! 
 
     # Results
     results = tk.Tk()
     results.title("Results")
     results.geometry("200x100")
-    if (introvert,intuitive,thinking,judging) >= 2 :  #INTJ
-        result_label = tk.Label(results, text="You are an Architect")
+    name = name_entry.get()
 
-    elif introvert >= 2 and intuitive >= 2 and thinking >= 2 and prospecting >= 2: #INTP
-        result_label = tk.Label(results, text="You are a Logician.")
+    if introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect") #INTJ 
 
-    elif extrovert >= 2 and intuitive >= 2 and thinking >= 2 and judging >= 2: #ENTJ
-        result_label = tk.Label(results, text="You are a Commander.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if prospecting >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect") #INTP
 
-    elif extrovert >= 2 and intuitive >= 2 and thinking >= 2 and prospecting >= 2: #ENTP
-        result_label = tk.Label(results, text="You are a Debater.")
+    elif extrovert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect") #ENTJ
 
-    elif introvert >= 2 and intuitive >= 2 and feeling >= 2 and judging >= 2: #INFJ
-        result_label = tk.Label(results, text="You are a Advocate.")
+    elif extrovert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif introvert >= 2 and intuitive >= 2 and feeling >= 2 and prospecting >= 2: #INFP
-        result_label = tk.Label(results, text="You are a Mediator.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif extrovert >= 2 and intuitive >= 2 and feeling >= 2 and judging >= 2: #ENFJ 
-        result_label = tk.Label(results, text="You are a Protagonist.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif extrovert >= 2 and intuitive >= 2 and feeling >= 2 and prospecting >= 2: #ENFP
-        result_label = tk.Label(results, text="You are a Campaigner.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect") 
 
-    elif introvert >= 2 and observant >= 2 and thinking >= 2 and judging >= 2: #ISTJ
-        result_label = tk.Label(results, text="You are a Logistician.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif introvert >= 2 and observant >= 2 and feeling >= 2 and judging >= 2: #ISFJ
-        result_label = tk.Label(results, text="You are a Defender.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif extrovert >= 2 and observant >= 2 and thinking >= 2 and judging >= 2: #ESTJ
-        result_label = tk.Label(results, text="You are a Executive.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif extrovert >= 2 and observant >= 2 and feeling >= 2 and judging >= 2: #ESFJ
-        result_label = tk.Label(results, text="You are a Consultant.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif introvert >= 2 and observant >= 2 and thinking >= 2 and prospecting >= 2: #ISTP
-        result_label = tk.Label(results, text="You are a Virtuoso.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
-    elif introvert >= 2 and observant >= 2 and feeling >= 2 and prospecting >= 2: #ISFP 
-        result_label = tk.Label(results, text="You are a  Adventurer.")
-
-    elif extrovert >= 2 and observant >= 2 and thinking >= 2 and prospecting >= 2: #ESTP 
-        result_label = tk.Label(results, text="You are a Entrepreneur.")
-
-    elif extrovert >= 2 and observant >= 2 and feeling >= 2 and prospecting >= 2: #ESFP
-        result_label = tk.Label(results, text="You are a Entertainer.")
+    elif introvert >= 2:
+        if intuitive >= 2 :
+            if thinking >= 2 :
+                if judging >= 2 :
+                    result_label = tk.Label(results, text="You are an Architect")
 
     else:
-        result_label = tk.Label(results, text="You are not a human if you have none of the 16 personalities")
+        result_label = tk.Label(results, text= "Hello "+name+" is not a human if you have none of the 16 personalities")
     result_label.pack()
     results.mainloop()
+
+
 
 # Create the main window
 root = tk.Tk()
 root.title("Personality Test")
-root.geometry("200x100")
+root.geometry("700x600")
+root.config(background="#ffffff")
+root.resizable(0,0)
 
-# Create the "Start Test" button
-start_test_button = tk.Button(root, text="Start Test", command=personality_test)
-start_test_button.pack()
+start_label = tk.Label(root, text="Welcome to the Personality Test Game!")
+start_label.pack(pady=(10,30))
+img1 = PhotoImage(file="Images/transparentGradHat.png")
+
+labelimage = Label(
+    root,
+    image = img1,
+    background = "#ffffff",
+)
+labelimage.pack(pady=(40,0))
+
+labeltext = Label(
+    root,
+    text = "Personality Test",
+    font = ("Comic sans MS",24,"bold"),
+    background = "#ffffff",
+)
+labeltext.pack(pady=(0,50))
+
+img2 = PhotoImage(file="Images/Frame.png")
+
+name_label = tk.Label(root, text="Please enter your name:")
+name_label.pack()
+name_entry = tk.Entry(root)
+name_entry.pack(pady=(2,5))
+
+btnStart = Button(
+    root,
+    image = img2,
+    relief = FLAT,
+    border = 0,
+    command = personality_test,
+)
+btnStart.pack()
+
+
+
+
+lblInstruction = Label(
+    root,
+    text = "Read The Rules And\nClick Start Once You Are ready",
+    background = "#ffffff",
+    font = ("Consolas",14),
+    justify = "center",
+)
+lblInstruction.pack(pady=(10,20))
+
+lblRules = Label(
+    root,
+    text = "This Test contains 15 questions\nOnce you select a radio button that will be a final choice\nhence think before you select",
+    width = 100,
+    font = ("Times",14),
+    background = "#000000",
+    foreground = "#FACA2F",
+)
+lblRules.pack()
 
 root.mainloop()
-root.destroy()
+
