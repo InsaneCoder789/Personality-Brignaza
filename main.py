@@ -139,6 +139,7 @@ class App(tk.Tk):
         self.img = ImageTk.PhotoImage(Image.open("Images/QnAFrame.png"))
         self.img_label = tk.Label(self, image=self.img)
         self.img_label.pack()
+        self.geometry("{}x{}".format(self.img.width(), self.img.height()))
 
         self.question_label = tk.Label(self, text=self.questions[self.index])
         self.question_label.place(relx=0.5, rely=0.4, anchor="center")
