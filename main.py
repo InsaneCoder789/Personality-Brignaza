@@ -154,7 +154,7 @@ class App(tk.Tk):
         self.option3_button.pack(padx=350, pady=250, anchor="center")
 
         self.next_button = tk.Button(self, text="Next", font=("Helvetica", 14), command=self.next_question)
-        self.next_button.place(relx=0.5, rely=0.92, anchor="center")
+        self.next_button.place(relx=0.5, rely=0.89, anchor="center")
 
     def select_option(self, option_index):
         self.answers.append(self.options[self.index][option_index])
