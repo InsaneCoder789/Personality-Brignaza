@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter as ttk 
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
@@ -141,19 +142,19 @@ class App(tk.Tk):
         self.img_label.pack()
         self.geometry("{}x{}".format(self.img.width(), self.img.height()))
 
-        self.question_label = tk.Label(self, text=self.questions[self.index],font = ("Times",20))
+        self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Helvetica", 12))
         self.question_label.place(relx=0.5, rely=0.4, anchor="center")
 
         self.option1_button = tk.Button(self, text=self.options[self.index][0], command=lambda: self.select_option(0))
-        self.option1_button.pack(padx=150, pady=250, anchor="center")
+        self.option1_button.place(relx=0.5, rely=0.56, anchor="center")
 
         self.option2_button = tk.Button(self, text=self.options[self.index][1], command=lambda: self.select_option(1))
-        self.option2_button.pack(padx=250, pady=250, anchor="center")
+        self.option2_button.place(relx=0.5, rely=0.70, anchor="center")
 
         self.option3_button = tk.Button(self, text=self.options[self.index][2], command=lambda: self.select_option(2))
-        self.option3_button.pack(padx=350, pady=250, anchor="center")
+        self.option3_button.place(relx=0.5, rely=0.80, anchor="center")
 
-        self.next_button = tk.Button(self, text="Next", font=("Helvetica", 14), command=self.next_question)
+        self.next_button = ttk.Button(self, text="Next", font=("Helvetica", 14), command=self.next_question)
         self.next_button.place(relx=0.5, rely=0.89, anchor="center")
 
     def select_option(self, option_index):
