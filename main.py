@@ -17,8 +17,8 @@ class App(tk.Tk):
         self.create_start_page()
 
     def create_start_page(self):
-        self.start_label = tk.Label(self, text="Welcome to the Personality Test Game!")
-        self.start_label.pack(pady=(10,30))
+        #self.start_label = tk.Label(self, text="Welcome to the Personality Test Game!")
+        #self.start_label.pack(pady=(10,30))
         self.img1 = PhotoImage(file="Images/transparentGradHat.png")
 
         self.labelimage = Label(
@@ -34,7 +34,7 @@ class App(tk.Tk):
     font = ("Comic sans MS",24,"bold"),
     background = "#ffffff",
 )
-        self.labeltext.pack(pady=(0,50))
+        self.labeltext.pack(pady=(10,50))
 
         self.img2 = PhotoImage(file="Images/Frame.png")
 
@@ -74,7 +74,7 @@ class App(tk.Tk):
         self.lblRules.pack()
 
     def start_questionnaire(self):
-        self.start_label.destroy()
+        #self.start_label.destroy()
         self.labelimage.destroy()
         self.labeltext.destroy()
         self.name_label.destroy()
