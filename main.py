@@ -142,19 +142,19 @@ class App(tk.Tk):
         self.img_label.pack()
         self.geometry("{}x{}".format(self.img.width(), self.img.height()))
 
-        self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Helvetica", 12))
+        self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Alegreya", 12))
         self.question_label.place(relx=0.5, rely=0.4, anchor="center")
         selected = StringVar()
-        self.option1_button = ttk.Radiobutton(self, text=self.options[self.index][0], variable=selected ,value=lambda: self.select_option(0))
+        self.option1_button = ttk.Radiobutton(self, text=self.options[self.index][0],font = ("Alegreya", 20),bg="#F8E6DF", variable=selected ,value=lambda: self.select_option(0))
         self.option1_button.place(relx=0.5, rely=0.56, anchor="center")
 
-        self.option2_button = ttk.Radiobutton(self, text=self.options[self.index][1],variable=selected , value=lambda: self.select_option(1))
+        self.option2_button = ttk.Radiobutton(self, text=self.options[self.index][1], font = ("Alegreya", 20),bg="#F8E6DF", variable=selected , value=lambda: self.select_option(1))
         self.option2_button.place(relx=0.5, rely=0.70, anchor="center")
 
-        self.option3_button = ttk.Radiobutton(self, text=self.options[self.index][2], variable=selected , value=lambda: self.select_option(2))
+        self.option3_button = ttk.Radiobutton(self, text=self.options[self.index][2],font = ("Alegreya", 20),bg="#F8E6DF", variable=selected , value=lambda: self.select_option(2))
         self.option3_button.place(relx=0.5, rely=0.80, anchor="center")
 
-        self.next_button = ttk.Button(self, text="Next", font=("Helvetica", 14), command=self.next_question)
+        self.next_button = ttk.Button(self, text="Next", font=("Alegreya", 14), command=self.next_question)
         self.next_button.place(relx=0.5, rely=0.89, anchor="center")
 
     def select_option(self, option_index):
