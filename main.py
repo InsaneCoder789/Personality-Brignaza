@@ -95,12 +95,14 @@ class App(tk.Tk):
         '6. Do you believe that compared to other people, your life seems smoother and more gratifying ?',
         "7. Can you remain joyful even when things aren't going well ?",
         "8. Do you become irritated if someone takes your stuff from you without seeking permission ?",
-        "9. If your peers exclude you from a game, you:”,”What sort of friends do you prefer having ?",
-        "10. Are you someone who is usually careful ?",
-        "11. Do you ever have the thought that 'People are so irrational, they can't even be entrusted to care for their own good' ?",
-        "12. Do you ever get the feeling that you aren't much good or that you never do anything meaningful ?",
-        "13. Do you become really upset with others when something goes wrong before you begin to consider what might be done to fix it ?",
-        "14. Have you ever felt as though your feelings are so bottled up, you could burst ?"
+        "9. If your peers exclude you from a game, you:",
+        "10.What sort of friends do you prefer having ?",
+        "11. Are you someone who is usually careful ?",
+        "12. Do you ever have the thought that 'People are so irrational, they can't even be entrusted to care for their own good' ?",
+        "13. Do you ever get the feeling that you aren't much good or that you never do anything meaningful ?",
+        "14. Do you become really upset with others when something goes wrong before you begin to consider what might be done to fix it ?",
+        "15. Have you ever felt as though your feelings are so bottled up, you could burst ?",
+        ""
 
 ]
 
@@ -124,6 +126,7 @@ class App(tk.Tk):
             ["Yes","Perhaps","No"],
             ["Often","Sometimes","Seldom"],
             ["Often","Sometimes","Seldom"],
+            ["","",""]
 
 
             ]
@@ -134,7 +137,9 @@ class App(tk.Tk):
         self.answers = []
         self.index = 0
         self.answer_list = []
-
+        
+    
+    
         self.title("Questionnaire")
 
         self.img = ImageTk.PhotoImage(Image.open("Images/QnAFrame.png"))
@@ -146,28 +151,30 @@ class App(tk.Tk):
         self.question_label.place(relx=0.5, rely=0.4, anchor="center")
 
         self.var = tk.StringVar()
-        self.option1_button = ttk.Radiobutton(self, text=self.options[self.index][0],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var ,value=self.options[self.index][0], command=self.handle_selection)
+        self.var.set(None)
+
+
+        self.option1_button = ttk.Radiobutton(self, text=self.options[self.index][0],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var ,value=self.options[self.index][0])
         self.option1_button.place(relx=0.5, rely=0.56, anchor="center")
 
-        self.option2_button = ttk.Radiobutton(self, text=self.options[self.index][1], font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var , value=self.options[self.index][1], command=self.handle_selection)
+        self.option2_button = ttk.Radiobutton(self, text=self.options[self.index][1], font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var, value=self.options[self.index][1])
         self.option2_button.place(relx=0.5, rely=0.70, anchor="center")
 
-        self.option3_button = ttk.Radiobutton(self, text=self.options[self.index][2],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var , value=self.options[self.index][2], command=self.handle_selection)
+        self.option3_button = ttk.Radiobutton(self, text=self.options[self.index][2],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var , value=self.options[self.index][2])
         self.option3_button.place(relx=0.5, rely=0.80, anchor="center")
 
         self.next_button = ttk.Button(self, text="Next", font=("Alegreya", 14), command=self.next_question)
         self.next_button.place(relx=0.5, rely=0.89, anchor="center")
 
     def handle_selection(self):
-        try:
-            selected_index = int(self.var.get())
-            self.answers.append(self.options[self.index][selected_index])
-        except ValueError:
-            print("Invalid selection, please select a valid option")
+        selected_value = self.var.get()
+        if selected_value in self.options[self.index]:
+            selected_index = self.options[self.index].index(selected_value)
+            if [self.index, selected_index] not in self.answers:
+                self.answers.append([self.index, selected_index])
 
-
-    def select_option(self, option_index):
-        self.answers.append(self.options[self.index][option_index])
+   # def select_option(self, option_index):
+        #self.answers.append(self.options[self.index][option_index])
 
     def next_question(self):
         self.handle_selection()
@@ -175,9 +182,9 @@ class App(tk.Tk):
         self.questions_index += 1
         self.index += 1
         self.question_label.config(text=self.questions[self.questions_index])
-        self.option1_button.config(text=self.options[self.index][0])
-        self.option2_button.config(text=self.options[self.index][1])
-        self.option3_button.config(text=self.options[self.index][2])
+        self.option1_button.config(text=self.options[self.index][0],value=self.options[self.index][0])
+        self.option2_button.config(text=self.options[self.index][1],value=self.options[self.index][1])
+        self.option3_button.config(text=self.options[self.index][2],value=self.options[self.index][2])
 
         if self.questions_index == len(self.questions) - 1:
             self.next_button.destroy()
@@ -186,11 +193,18 @@ class App(tk.Tk):
             
 
     def finish(self):
-        correct = 0
-        #for i in range(len(self.answers)):
-            #if self.answers[i] == self.answer_list[i]:
-                #correct += 1
-        print(f"You got {correct} out of {len(self.answers)} correct.")
+
+        #removing all the above images and labels and questions 
+        self.img_label.destroy()
+        self.question_label.destroy()
+        self.option1_button.destroy()
+        self.option2_button.destroy()
+        self.option3_button.destroy()
+        self.finish_button.destroy()
+
+
+        if self.answers == self.answer_list:
+             print(f"congrats the code is officially working WOHOO!")
         print(self.answers)
 
 
