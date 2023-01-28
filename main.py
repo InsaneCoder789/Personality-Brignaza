@@ -203,6 +203,14 @@ class App(tk.Tk):
         self.finish_button.destroy()
 
 
+        self.title("Finale!")
+
+        self.img4 = ImageTk.PhotoImage(Image.open("Images/FinalFrame.png"))
+        self.img_label1 = tk.Label(self, image=self.img4)
+        self.img_label1.pack()
+        self.geometry("{}x{}".format(self.img4.width(), self.img4.height()))
+
+
         if self.answers == self.answer_list:
              print(f"congrats the code is officially working WOHOO!")
         print(self.answers)
