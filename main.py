@@ -142,25 +142,33 @@ class App(tk.Tk):
         self.img_label.pack()
         self.geometry("{}x{}".format(self.img.width(), self.img.height()))
 
-        self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Alegreya", 20), bg="#FFFFFF" ,wraplength=60,width=60, height=10 )
+        self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Alegreya", 12),width=60, height=10 )
         self.question_label.place(relx=0.5, rely=0.4, anchor="center")
-        selected = StringVar()
-        self.option1_button = ttk.Radiobutton(self, text=self.options[self.index][0],font = ("Alegreya", 15),bg="#F8E6DF", variable=selected ,value=lambda: self.select_option(0))
+
+        self.var = tk.Var()
+        self.option1_button = ttk.Radiobutton(self, text=self.options[self.index][0],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var ,value=self.options[self.index][0], command=self.handle_selection)
         self.option1_button.place(relx=0.5, rely=0.56, anchor="center")
 
-        self.option2_button = ttk.Radiobutton(self, text=self.options[self.index][1], font = ("Alegreya", 15),bg="#F8E6DF", variable=selected , value=lambda: self.select_option(1))
+        self.option2_button = ttk.Radiobutton(self, text=self.options[self.index][1], font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var , value=self.options[self.index][1], command=self.handle_selection)
         self.option2_button.place(relx=0.5, rely=0.70, anchor="center")
 
-        self.option3_button = ttk.Radiobutton(self, text=self.options[self.index][2],font = ("Alegreya", 15),bg="#F8E6DF", variable=selected , value=lambda: self.select_option(2))
+        self.option3_button = ttk.Radiobutton(self, text=self.options[self.index][2],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var , value=self.options[self.index][2], command=self.handle_selection)
         self.option3_button.place(relx=0.5, rely=0.80, anchor="center")
 
         self.next_button = ttk.Button(self, text="Next", font=("Alegreya", 14), command=self.next_question)
         self.next_button.place(relx=0.5, rely=0.89, anchor="center")
 
+    def handle_selection(self):
+        selected_index = int(self.var.get())
+        self.answers.append(selected_index)
+
+
     def select_option(self, option_index):
         self.answers.append(self.options[self.index][option_index])
 
     def next_question(self):
+        self.handle_selection()
+        self.var.set(None)
         self.questions_index += 1
         self.index += 1
         self.question_label.config(text=self.questions[self.questions_index])
@@ -168,16 +176,19 @@ class App(tk.Tk):
         self.option2_button.config(text=self.options[self.index][1])
         self.option3_button.config(text=self.options[self.index][2])
 
-        if self.questions == self.questions[-1]:
-            self.next_button.config(text="Finish", command=self.finish)
-            self.next_button.pack()
+        if self.questions_index == len(self.questions) - 1:
+            self.next_button.destroy()
+            self.finish_button = ttk.Button(self, text="Finish", font=("Alegreya", 14), command=self.finish)
+            self.finish_button.place(relx=0.5, rely=0.89, anchor="center")
+            
 
     def finish(self):
         correct = 0
-        for i in range(len(self.answers)):
-            if self.output[i] == self.answers[i]:
-                correct += 1
+        #for i in range(len(self.answers)):
+            #if self.answers[i] == self.answer_list[i]:
+                #correct += 1
         print(f"You got {correct} out of {len(self.answers)} correct.")
+        print(self.answers)
 
 
 if __name__ == "__main__":
