@@ -145,7 +145,7 @@ class App(tk.Tk):
         self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Alegreya", 12),width=60, height=10 )
         self.question_label.place(relx=0.5, rely=0.4, anchor="center")
 
-        self.var = tk.Var()
+        self.var = tk.StringVar()
         self.option1_button = ttk.Radiobutton(self, text=self.options[self.index][0],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var ,value=self.options[self.index][0], command=self.handle_selection)
         self.option1_button.place(relx=0.5, rely=0.56, anchor="center")
 
@@ -159,8 +159,11 @@ class App(tk.Tk):
         self.next_button.place(relx=0.5, rely=0.89, anchor="center")
 
     def handle_selection(self):
-        selected_index = int(self.var.get())
-        self.answers.append(selected_index)
+        try:
+            selected_index = int(self.var.get())
+            self.answers.append(self.options[self.index][selected_index])
+        except ValueError:
+            print("Invalid selection, please select a valid option")
 
 
     def select_option(self, option_index):
