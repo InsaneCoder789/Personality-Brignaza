@@ -146,8 +146,9 @@ class App(tk.Tk):
         self.img_label = tk.Label(self, image=self.img)
         self.img_label.pack()
         self.geometry("{}x{}".format(self.img.width(), self.img.height()))
+        
 
-        self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Alegreya", 12),width=60, height=10 )
+        self.question_label = ttk.Label(self, text=self.questions[self.index],font = ("Alegreya", 12),bg="#ffffff")
         self.question_label.place(relx=0.5, rely=0.4, anchor="center")
 
         self.var = tk.StringVar()
@@ -158,7 +159,7 @@ class App(tk.Tk):
         self.option1_button.place(relx=0.5, rely=0.56, anchor="center")
 
         self.option2_button = ttk.Radiobutton(self, text=self.options[self.index][1], font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var, value=self.options[self.index][1])
-        self.option2_button.place(relx=0.5, rely=0.70, anchor="center")
+        self.option2_button.place(relx=0.5, rely=0.68, anchor="center")
 
         self.option3_button = ttk.Radiobutton(self, text=self.options[self.index][2],font = ("Alegreya", 15),bg="#F8E6DF", variable=self.var , value=self.options[self.index][2])
         self.option3_button.place(relx=0.5, rely=0.80, anchor="center")
