@@ -172,7 +172,7 @@ class App(tk.Tk):
         if selected_value in self.options[self.index]:
             selected_index = self.options[self.index].index(selected_value)
             if [self.index, selected_index] not in self.answers:
-                self.answers.append([self.index, selected_index])
+                self.answers.append(selected_index)
 
    # def select_option(self, option_index):
         #self.answers.append(self.options[self.index][option_index])
@@ -210,6 +210,8 @@ class App(tk.Tk):
         self.img_label1 = tk.Label(self, image=self.img4)
         self.img_label1.pack()
         self.geometry("{}x{}".format(self.img4.width(), self.img4.height()))
+
+
 
 
         if self.answers == self.answer_list:
