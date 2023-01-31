@@ -204,6 +204,79 @@ class App(tk.Tk):
         self.finish_button.destroy()
 
 
+
+        #Structuring of the Answering element (Line 216 -  )
+
+        # Credit Goes to Rehatbir Singh for helping me out in this Part 
+        # @MysteryCoder456
+        # Copyright @ 2023 
+
+
+        #Personality List 
+        personality = []
+
+        personality_descriptions = {
+  "ISFJT": "Hello Your a ISFJT PERSON !"
+  
+  # all ur 16 possible types
+}
+
+
+#1  Introvert - Extrovert 
+        if self.answers[:3].count(2) >= 2:
+            print("Introvert - [I]!")
+            personality.append("I")
+        else :
+            print("Extrovert - [E]!")
+            personality.append("E")
+
+
+#2 Observant - Intuitive 
+        if self.answers[3:6].count(2) >= 0:
+            print("Observant - [S]!")
+            personality.append("S")
+        else :
+            print("Intuitive - [N]!")
+            personality.append("N")
+
+
+#3 Thinking - Feeling 
+        if self.answers[6:9].count(2) >= 0:
+            print("Feeling - [F]!")
+            personality.append("F")
+        else :
+            print("Thinking - [T]!")
+            personality.append("I")
+
+        
+#4 Judging - Prospecting 
+        if self.answers[9:12].count(2) >= 0:
+            print("Judging - [J]!")
+            personality.append("J")
+        else :
+            print("Prospecting - [P]!")
+            personality.append("P")
+
+
+#5 Assertive - Turbulent 
+        if self.answers[12:15].count(2) >= 0:
+            print("Turbulent - [T]!")
+            personality.append("T")
+        else :
+            print("Assertive - [A]!")
+            personality.append("A")
+
+       
+        personality_str = "".join(personality)
+        personality_desc = personality_descriptions[personality_str]
+        print(personality)
+        print(personality_str)
+        print(f"Your personality is {personality_str}")
+        print(personality_desc)
+
+
+
+#GUI Design of the page 
         self.title("Finale!")
 
         self.img4 = ImageTk.PhotoImage(Image.open("Images/FinalFrame.png"))
