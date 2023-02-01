@@ -178,6 +178,9 @@ class App(tk.Tk):
         #self.answers.append(self.options[self.index][option_index])
 
     def next_question(self):
+        if self.var.get() == 'None':
+            return
+
         self.handle_selection()
         self.var.set(None)
         self.questions_index += 1
@@ -216,7 +219,55 @@ class App(tk.Tk):
         personality = []
 
         personality_descriptions = {
-  "ISFJT": "Hello Your a ISFJT PERSON !"
+
+#Architect
+  "INTJA": "Hello Your a ARCHITECT PERSON !",
+  "INTJT": "Hello Your a ARCHITECT PERSON !",
+#Logician
+ "INTPA": "Hello Your a LOGICIAN PERSON !",
+  "INTPT": "Hello Your a LOGICIAN PERSON !",
+#Commander
+ "ENTJA": "Hello Your a COMMANDER PERSON !",
+  "ENTJT": "Hello Your a COMMANDER PERSON !",
+#Debator
+ "ENTPA": "Hello Your a DEBATOR PERSON !",
+ "ENTPT": "Hello Your a DEBATOR PERSON !",
+#Advocate
+ "INFJA": "Hello Your a ADVOCATE PERSON !",
+ "INFJT": "Hello Your a ADVOCATE PERSON !",
+#Mediator
+ "INFPA": "Hello Your a MEDIATOR PERSON !",
+ "INFPT": "Hello Your a MEDIATOR PERSON !",
+#Protagonist
+"ENFJA": "Hello Your a PROTAGONIST PERSON !",
+"ENFJT": "Hello Your a PROTAGONIST PERSON !",
+#Campaigner
+"ENFPA": "Hello Your a CAMPAIGNER PERSON !",
+"ENFPT": "Hello Your a CAMPAIGNER PERSON !",
+#Logistician
+ "ISTJA": "Hello Your a LOGISTICIAN PERSON !",
+ "ISTJT": "Hello Your a LOGISTICAN PERSON !",
+#Defender
+"ISFJA": "Hello Your a DEFENDER PERSON !",
+"ISFJT": "Hello Your a DEFENDER PERSON !",
+#Executive 
+"ESTJA": "Hello Your a ARCHITECT PERSON !",
+"ESTJT": "Hello Your a ARCHITECT PERSON !",
+#Consul 
+ "ESFJA": "Hello Your a ARCHITECT PERSON !",
+ "ESFJT": "Hello Your a ARCHITECT PERSON !",
+#Virtuoso
+ "ISTPA": "Hello Your a ARCHITECT PERSON !",
+ "ISTJT": "Hello Your a ARCHITECT PERSON !",
+#Adventure 
+ "ISFPA": "Hello Your a ARCHITECT PERSON !",
+ "ISFPT": "Hello Your a ARCHITECT PERSON !",
+#Entreprenuer
+"ESTPA": "Hello Your a ARCHITECT PERSON !",
+"ESTPT": "Hello Your a ARCHITECT PERSON !",
+#Entertainer
+ "ESFPA": "Hello Your a ARCHITECT PERSON !",
+ "ESFPT": "Hello Your a ARCHITECT PERSON !",
   
   # all ur 16 possible types
 }
