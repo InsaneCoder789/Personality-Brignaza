@@ -339,9 +339,11 @@ class App(tk.Tk):
         self.img_label1.pack()
         self.geometry("{}x{}".format(self.img4.width(), self.img4.height()))
 
-        if self.answers == self.answer_list:
-            print(f"congrats the code is officially working WOHOO!")
-        print(self.answers)
+        self.textbox = tk.Text(self, height=5, width=30)
+        self.textbox.pack()
+
+        personality_detail = personality_descriptions[personality_str]
+        self.textbox.insert(tk.END, personality_detail)
 
 
 if __name__ == "__main__":
