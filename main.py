@@ -251,23 +251,23 @@ class App(tk.Tk):
 "ISFJA": "Hello Your a DEFENDER PERSON !",
 "ISFJT": "Hello Your a DEFENDER PERSON !",
 #Executive 
-"ESTJA": "Hello Your a ARCHITECT PERSON !",
-"ESTJT": "Hello Your a ARCHITECT PERSON !",
+"ESTJA": "Hello Your a EXECUTIVE PERSON !",
+"ESTJT": "Hello Your a EXECUTIVE PERSON !",
 #Consul 
- "ESFJA": "Hello Your a ARCHITECT PERSON !",
- "ESFJT": "Hello Your a ARCHITECT PERSON !",
+ "ESFJA": "Hello Your a CONSUL PERSON !",
+ "ESFJT": "Hello Your a CONSUL PERSON !",
 #Virtuoso
- "ISTPA": "Hello Your a ARCHITECT PERSON !",
- "ISTJT": "Hello Your a ARCHITECT PERSON !",
+ "ISTPA": "Hello Your a VIRTUOSO PERSON !",
+ "ISTJT": "Hello Your a VIRTUOSO PERSON !",
 #Adventure 
- "ISFPA": "Hello Your a ARCHITECT PERSON !",
- "ISFPT": "Hello Your a ARCHITECT PERSON !",
+ "ISFPA": "Hello Your a ADVENTURE PERSON !",
+ "ISFPT": "Hello Your a ADVENTURE PERSON !",
 #Entreprenuer
-"ESTPA": "Hello Your a ARCHITECT PERSON !",
-"ESTPT": "Hello Your a ARCHITECT PERSON !",
+"ESTPA": "Hello Your a ENTREPRENUER PERSON !",
+"ESTPT": "Hello Your a ENTREPRENUER PERSON !",
 #Entertainer
- "ESFPA": "Hello Your a ARCHITECT PERSON !",
- "ESFPT": "Hello Your a ARCHITECT PERSON !",
+ "ESFPA": "Hello Your a ENTERTAINER PERSON !",
+ "ESFPT": "Hello Your a ENTERTAINER PERSON !",
   
   # all ur 16 possible types
 }
