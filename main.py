@@ -81,8 +81,6 @@ class App(tk.Tk):
 
 
     def start_questionnaire(self):
-        global name 
-        global email 
         name = self.name_entry.get()
         email = self.email_entry.get()
         if not name :
@@ -119,7 +117,7 @@ class App(tk.Tk):
             "13. Do you ever get the feeling that you aren't much good or that you never do anything meaningful ?",
             "14. Do you become really upset with others when something goes wrong before you begin to consider what might be done to fix it ?",
             "15. Have you ever felt as though your feelings are so bottled up, you could burst ?",
-            "",
+            "Press Finish to Submit Your response!",
         ]
 
         self.options = [
@@ -154,50 +152,63 @@ class App(tk.Tk):
         self.img = ImageTk.PhotoImage(Image.open("Images/QnAFrame.png"))
         self.img_label = tk.Label(self, image=self.img)
         self.img_label.pack()
-        self.geometry("1000x768")
-
-        self.question_label = ttk.Label(
-            self, text=self.questions[self.index], font=("Alegreya", 18), bg="#ffffff",fg='black'
-        )
-        self.question_label.place(relx=0.5, rely=0.4, anchor="center")
+        self.geometry("600x600")
+#Questions in Label
+        #self.question_label = ttk.Label(
+        #    self, text=self.questions[self.index], font=("Alegreya", 10), bg="#ffffff",fg='black')
+        #self.question_label.place(relx=0.5, rely=0.3, anchor="center")
 
         self.var = tk.StringVar()
         self.var.set(None)
 
+#Questions in Textbox 
+        self.QsBox1 = tk.Text(
+            self,
+            font=("Alegreya", 20),
+            height=5,
+            width=31,
+            wrap=tk.WORD,
+            fg="black",
+            bg="#ffffff"
+            )
+        self.QsBox1.place(relx=0.150,rely=0.2)
+        self.QsBox1.insert(tk.END,self.questions[0])
+
+
         self.option1_button = ttk.Radiobutton(
             self,
             text=self.options[self.index][0],
-            font=("Alegreya", 18),
+            font=("Alegreya", 16),
             bg="#F8E6DF",
             variable=self.var,
             value=self.options[self.index][0],
         )
-        self.option1_button.place(relx=0.5, rely=0.53, anchor="center")
+        self.option1_button.place(relx=0.5, rely=0.47, anchor="center")
 
         self.option2_button = ttk.Radiobutton(
             self,
             text=self.options[self.index][1],
-            font=("Alegreya", 18),
+            font=("Alegreya", 16 ),
             bg="#F8E6DF",
             variable=self.var,
             value=self.options[self.index][1],
         )
-        self.option2_button.place(relx=0.5, rely=0.69, anchor="center")
+        self.option2_button.place(relx=0.5, rely=0.60, anchor="center")
 
         self.option3_button = ttk.Radiobutton(
             self,
             text=self.options[self.index][2],
-            font=("Alegreya", 18),
+            font=("Alegreya", 16),
             bg="#F8E6DF",
             variable=self.var,
             value=self.options[self.index][2],
         )
-        self.option3_button.place(relx=0.5, rely=0.85, anchor="center")
+        self.option3_button.place(relx=0.5, rely=0.73, anchor="center")
 
         self.next_button = ttk.Button(
             self, text="Next", font=("Alegreya", 14), command=self.next_question
         )
-        self.next_button.place(relx=0.5, rely=0.95, anchor="center")
+        self.next_button.place(relx=0.5, rely=0.825, anchor="center")
 
     def handle_selection(self):
         selected_value = self.var.get()
@@ -217,7 +228,9 @@ class App(tk.Tk):
         self.var.set(None)
         self.questions_index += 1
         self.index += 1
-        self.question_label.config(text=self.questions[self.questions_index])
+        self.QsBox1.delete("1.0", "end")
+        self.QsBox1.insert(END,self.questions[self.questions_index])
+        #self.question_label.config(text=self.questions[self.questions_index])
         self.option1_button.config(
             text=self.options[self.index][0], value=self.options[self.index][0]
         )
@@ -242,7 +255,7 @@ class App(tk.Tk):
 
         # removing all the above images and labels and questions
         self.img_label.destroy()
-        self.question_label.destroy()
+        self.QsBox1.destroy()
         self.option1_button.destroy()
         self.option2_button.destroy()
         self.option3_button.destroy()
@@ -371,7 +384,7 @@ class App(tk.Tk):
             personality.append("E")
 
         # 2 Observant - Intuitive
-        if self.answers[3:6].count(2) >= 0:
+        if self.answers[3:6].count(0) >= 2:
             print("Observant - [S]!")
             personality.append("S")
         else:
@@ -379,7 +392,7 @@ class App(tk.Tk):
             personality.append("N")
 
         # 3 Thinking - Feeling
-        if self.answers[6:9].count(2) >= 0:
+        if self.answers[6:9].count(0) >= 2:
             print("Feeling - [F]!")
             personality.append("F")
         else:
@@ -387,7 +400,7 @@ class App(tk.Tk):
             personality.append("T")
 
         # 4 Judging - Prospecting
-        if self.answers[9:12].count(2) >= 0:
+        if self.answers[9:12].count(0) >= 2:
             print("Judging - [J]!")
             personality.append("J")
         else:
@@ -395,7 +408,7 @@ class App(tk.Tk):
             personality.append("P")
 
         # 5 Assertive - Turbulent
-        if self.answers[12:15].count(2) >= 0:
+        if self.answers[12:15].count(0) >= 2:
             print("Turbulent - [T]!")
             personality.append("T")
         else:
