@@ -4,6 +4,9 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
 from tkinter import FLAT
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 
@@ -46,7 +49,7 @@ class App(tk.Tk):
       #Email entry of the person 
         self.email_label = tk.Label(self,text="Please Enter your Email ID:")
         self.email_label.pack()
-        self.email_entry = tk.Entry(self)
+        self.email_entry = tk.Entry(self,width=25)
         self.email_entry.pack(pady=(2,6))
 
 
@@ -77,7 +80,7 @@ class App(tk.Tk):
             foreground="#FACA2F",
         )
         self.lblRules.pack()
-    
+
 
 
     def start_questionnaire(self):
@@ -88,8 +91,17 @@ class App(tk.Tk):
         elif not email :
             return 
         else :
+            print("\n")
+            print("------------Info-of-the-user------------")
             print("Name:- ",name)
             print("Email:- ",email)
+            data = open("Data.txt","w")
+            data.writelines([name,"\n",email])
+            data.close()
+            dataline = open("Cache_data.txt","a")
+            dataline.writelines([name,"\n",email,"\n"])
+            dataline.close()
+
         # self.start_label.destroy()
         self.labelimage.destroy()
         self.labeltext.destroy()
@@ -165,7 +177,7 @@ class App(tk.Tk):
         self.QsBox1 = tk.Text(
             self,
             font=("Alegreya", 20),
-            height=5,
+            height=3,
             width=31,
             wrap=tk.WORD,
             fg="black",
@@ -200,6 +212,7 @@ class App(tk.Tk):
             text=self.options[self.index][2],
             font=("Alegreya", 16),
             bg="#F8E6DF",
+        
             variable=self.var,
             value=self.options[self.index][2],
         )
@@ -414,7 +427,10 @@ class App(tk.Tk):
         else:
             print("Assertive - [A]!")
             personality.append("A")
-
+        print("\n")
+        print("---------------------------------------- Personality Generation -----------------------------------------")
+        data_read = open("Data.txt","r")
+        data_main = data_read.readlines()
         personality_str = "".join(personality)
         personality_desc = personality_descriptions[personality_str]
         personality_name = personality_list[personality_str]
@@ -423,27 +439,58 @@ class App(tk.Tk):
         print(f"Your personality is {personality_str}")
         print(personality_name)
         print(personality_desc)
-
-        # GUI Design of the page
+        email_desc = "Hello ",data_main[0],"Sir!\n","Your Personality Type is :-  ",personality_name,"\n","WHat does that mean ?\n",personality_desc
+        
+              # GUI Design of the page
         self.title("Result!")
 
         self.img4 = ImageTk.PhotoImage(Image.open("Images/FinalFrame.png"))
         self.img_label1 = tk.Label(self, image=self.img4)
         self.img_label1.pack()
-        self.geometry("1000x768")
+        self.geometry("600x600")
         self.font1 = ('arial',80)
-        self.font2 = ('arial',24)
+        self.font2 = ('arial',20)
 
-        self.TextBox1 = tk.Text(self,font=self.font1, height=1, width=15,wrap=tk.WORD,fg="black", bg="#C1E7E3")
-        self.TextBox1.place(x=230,y=300)
+        self.TextBox1 = tk.Text(self,font=self.font1, height=1, width=9,wrap=tk.WORD,fg="black", bg="#C1E7E3")
+        self.TextBox1.place(x=90,y=200)
         self.TextBox1.insert(tk.END,personality_name)
 
-        self.TextBox2 = tk.Text(self,font=self.font2, height=10, width=50,wrap=tk.WORD,fg="black", bg="#E6FCFA")
-        self.TextBox2.place(x=130,y=425)
+        self.TextBox2 = tk.Text(self,font=self.font2, height=10, width=40,wrap=tk.WORD,fg="black", bg="#E6FCFA")
+        self.TextBox2.place(x=40,y=325)
         self.TextBox2.insert(tk.END,personality_desc)
-    
 
-        
+       #Emailing the result !! 
+       #1.Server Startup
+        print("\n")
+        print("---------------------------------------------- Email Request -------------------------------------------------------")
+        print("Starting email server!")
+        smtp_server = 'smtp.office365.com'
+        smtp_port = 587
+        smtp_username = 'chatterjeerohan11@outlook.com'
+        smtp_password = 'rahul5111'
+        print("Successful console log in!!...")
+
+        #Sender Email Address Location 
+
+        email_from = 'chatterjeerohan11@outlook.com'
+        email_to = data_main[1]
+        email_subject = 'Your Personality Test Result'
+        email_body = ''.join(email_desc)
+        print("Message Body Initiating.....")
+        msg = MIMEMultipart()
+        msg['From'] = email_from
+        msg['To'] = email_to
+        msg['Subject'] = email_subject
+        msg.attach(MIMEText(email_body, 'plain'))
+
+        # Send the email
+        print("Sending the result to the user !")  
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(smtp_username, smtp_password)
+        server.sendmail(email_from, email_to, msg.as_string())
+        server.quit()    
+        print("Mail Sent!")    
 
 
 if __name__ == "__main__":
